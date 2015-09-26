@@ -22,6 +22,7 @@ module.exports = React.createClass({
     return (
       <div>
         hello
+        <RouteHandler/>
       </div>
     );
   }
