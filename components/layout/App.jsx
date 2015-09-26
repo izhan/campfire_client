@@ -4,8 +4,22 @@ var $ = require('jquery');
 var RouteHandler = Router.RouteHandler;
 
 module.exports = React.createClass({
+  childContextTypes: {
+    baseUrl: React.PropTypes.string
+  },
+
+  getChildContext: function () {
+    return {
+      baseUrl: this.getBaseUrl()
+    };
+  },
+
+  getBaseUrl: function() {
+    return process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://obscure-citadel-9804.herokuapp.com';
+  },
+
   componentDidMount: function() {
-    var url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://obscure-citadel-9804.herokuapp.com';
+    var url = this.getBaseUrl()
 
     console.log("hello world");
     $.ajax({
