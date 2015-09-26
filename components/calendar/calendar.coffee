@@ -16,7 +16,7 @@ module.exports = React.createClass
       # google authentication succeed, now post data to server and handle data securely
       $.ajax
         type: 'POST'
-        url: '/auth/google_oauth2/callback'
+        url: @context.baseUrl + '/auth/google_oauth2/callback'
         dataType: 'json'
         data: response
         success: (json) ->
