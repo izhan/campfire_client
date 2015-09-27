@@ -7,6 +7,8 @@ CalendarStore = require('../../stores/calendar_store.coffee')
 CalendarList = require('./calendar_list.coffee')
 
 module.exports = React.createClass
+  displayName: "CalendarListContainer"
+  
   mixins: [ Reflux.ListenerMixin ]
 
   getInitialState: ->

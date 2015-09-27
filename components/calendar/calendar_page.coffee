@@ -5,6 +5,8 @@ AuthActions = require('../../actions/auth_action.coffee')
 CalendarListContainer = require('./calendar_list_container.coffee')
 
 module.exports = React.createClass
+  displayName: "CalendarPage"
+  
   mixins: [ Reflux.ListenerMixin ]
   # TODO make this a mixin
   contextTypes: {
