@@ -7,9 +7,12 @@ module.exports = React.createClass
     currentUser: React.PropTypes.object
   },
 
+  getUserEmail: ->
+    if @context.currentUser? then @context.currentUser.email else ""
+
   render: ->
     { div } = React.DOM
 
     div null,
       "THIS IS YOUR CALENDAR"
-      @context.currentUser.email
+      @getUserEmail()

@@ -1,12 +1,15 @@
 React = require('react')
 $ = require('jquery')
-Router = require('react-router')
 
 ApiMixin = require('../../mixins/api_mixin.coffee')
 AuthActions = require('../../actions/auth_action.coffee')
 
 module.exports = React.createClass
-  mixins: [Router.Navigation, ApiMixin]
+  mixins: [ApiMixin]
+
+  contextTypes: {
+    loggedIn: React.PropTypes.bool
+  }
   
   getInitialState: ->
     pendingLogin: false
@@ -29,9 +32,8 @@ module.exports = React.createClass
         data: response
         url: @getBaseUrl() + '/auth/google_oauth2/callback'
         success: (response) =>
-          @setState pendingLogin: false
           AuthActions.loginUser(response)
-          @transitionTo('calendar')
+          @setState pendingLogin: false
 
     else
       # google authentication failed

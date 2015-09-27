@@ -10,7 +10,7 @@ var RouteHandler = Router.RouteHandler;
 
 // TODO add PureRenderMixin to all of these
 module.exports = React.createClass({
-  mixins: [Reflux.ListenerMixin],
+  mixins: [Reflux.ListenerMixin, Router.Navigation],
 
   childContextTypes: {
     loggedIn: React.PropTypes.bool,
@@ -34,6 +34,14 @@ module.exports = React.createClass({
   onAuthChange: function() {
     var currentUser = AuthStore.getCurrentUser();
     var loggedIn = AuthStore.isLoggedIn();
+
+    // TODO clean this ugly mess
+    if (!this.state.loggedIn && loggedIn) {
+      this.transitionTo('calendar');
+    } else if (this.state.loggedIn && !loggedIn) {
+      this.transitionTo('login');
+    }
+
     this.setState({
       loggedIn: loggedIn,
       currentUser: currentUser
