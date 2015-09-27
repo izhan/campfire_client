@@ -44,15 +44,32 @@ module.exports = React.createClass
       console.log("we failed")
 
   render: ->
-    { div } = React.DOM
+    { div, span, img } = React.DOM
 
-    div null,
-      if @state.pendingLogin
-        "Logging you in..."
-      else
-        "Please Login to Continue"
-        
+    div
+      className: "login-page"
       div
-        className: "potato"
-        onClick: @onAuthClick
-        "asdf"
+        className: "container"
+        div
+          className: "row login-header"
+
+          div
+            className: "col-xs-12 text-center"
+
+            # putting it in public/ temporarily
+            img
+              src: "./img/tent_with_circle.png"
+              
+            div
+              className: "login-title"
+              "Campfire"
+
+            if @state.pendingLogin
+              "Logging you in..."
+            else
+              "Please Login to Continue"
+              
+            div
+              className: "potato"
+              onClick: @onAuthClick
+              "asdf"

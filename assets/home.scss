@@ -1,0 +1,14 @@
+@import "variables";
+
+.login-page {
+  background: $SKY_BLUE;
+  min-height: 525px;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.login-title {
+  color: $THEME_ORANGE;
+  font-family: $aleo-bold;
+  font-size: 64px;
+}
