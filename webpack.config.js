@@ -14,7 +14,8 @@ module.exports = {
     loaders: [
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.jsx$/, loader: 'jsx-loader' },
-      { test: /\.coffee$/, loader: 'coffee-loader' }
+      { test: /\.coffee$/, loader: 'coffee-loader' },
+      { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   },
   plugins: []
