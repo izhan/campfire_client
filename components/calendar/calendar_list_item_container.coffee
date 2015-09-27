@@ -4,7 +4,7 @@ Reflux = require('reflux')
 CalendarActions = require('../../actions/calendar_action.coffee')
 CalendarStore = require('../../stores/calendar_store.coffee')
 
-Calendar = require('./calendar.coffee')
+Calendar = require('./calendar_list_item.coffee')
 
 module.exports = React.createClass
   displayName: "CalendarContainer"
