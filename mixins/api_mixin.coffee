@@ -10,18 +10,24 @@ module.exports =
   getApiUrl: ->
     @getBaseUrl() + "/api/v1"
 
-  fetchFromApi: (path) ->
+  fetchFromApi: (path, opts={}) ->
+    data = opts.data
+    
     Promise.resolve(
       $.ajax
         type: 'GET'
         url: @getApiUrl() + path
+        data: data
         headers: { 'Authorization': @getJwt() }
     )
 
-  fetchFromNonApi: (path) ->
+  fetchFromNonApi: (path, opts={}) ->
+    data = opts.data
+    
     Promise.resolve(
       $.ajax
         type: 'GET'
         url: @getBaseUrl() + path
+        data: data
         headers: { 'Authorization': @getJwt() }
     )
