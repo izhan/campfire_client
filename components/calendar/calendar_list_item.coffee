@@ -2,7 +2,7 @@ React = require('react')
 Reflux = require('reflux')
 
 module.exports = React.createClass
-  displayName: "Calendar"
+  displayName: "CalendarListItem"
 
   propTypes:
     calendar: React.PropTypes.object

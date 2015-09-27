@@ -7,7 +7,7 @@ CalendarStore = require('../../stores/calendar_store.coffee')
 Calendar = require('./calendar_list_item.coffee')
 
 module.exports = React.createClass
-  displayName: "CalendarContainer"
+  displayName: "CalendarListItemContainer"
 
   propTypes:
     calendar: React.PropTypes.object
