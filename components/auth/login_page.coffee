@@ -44,7 +44,7 @@ module.exports = React.createClass
       console.log("we failed")
 
   renderLoginBox: ->
-    { div } = React.DOM
+    { div, img } = React.DOM
 
     div
       className: "login-box"
@@ -57,11 +57,10 @@ module.exports = React.createClass
       else
         div null,
           "Log in to get started!"
-        
+      
       div
-        className: "potato"
+        className: "google-auth-button"
         onClick: @onAuthClick
-        "asdf"
 
   renderLoginFooter: ->
     { div, img } = React.DOM

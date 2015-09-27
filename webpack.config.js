@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.jsx$/, loader: 'jsx-loader' },
       { test: /\.coffee$/, loader: 'coffee-loader' },
       { test: /\.scss$/, loader: 'style!css!sass' },
-      { test: /\.(ttf|eot|svg|otf|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader' }
+      { test: /\.(jpg|png|ttf|eot|svg|otf|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader' }
     ]
   },
   plugins: []

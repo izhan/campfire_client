@@ -7,9 +7,15 @@
   padding-top: 50px;
 }
 
+// begin header
+
 .login-header {
   position: relative;
   z-index: 11;
+}
+
+.tent-with-circle {
+  height: 120px;
 }
 
 .login-title {
@@ -18,9 +24,6 @@
   font-size: 72px;
 }
 
-.tent-with-circle {
-  height: 120px;
-}
 
 .login-box {
   width: 300px;
@@ -28,6 +31,22 @@
   margin: 0 auto;
   background: rgba(255, 255, 255, .5);
 }
+
+.google-auth-button {
+  height: 54px;
+  width: 240px;
+  cursor: pointer;
+  margin: 0 auto;
+  background-size: 240px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("img/btn_google_normal.png"); 
+  &:active {
+    background-image: url("img/btn_google_pressed.png"); 
+  }
+}
+
+// begin footer
 
 .login-footer {
   position: absolute;
