@@ -9,17 +9,18 @@ module.exports = React.createClass
 
   onGoogleSignin: (response) ->
     console.log("signin callback")
-    if response and !response.error
+    if response and response["code"]
       console.log("yay response")
       console.log(response)
-      console.log(@context.baseUrl)
       # google authentication succeed, now post data to server and handle data securely
       $.ajax
         type: 'POST'
-        url: @context.baseUrl + '/auth/google_oauth2/callback'
-        dataType: 'json'
+        # contentType: 'application/octet-stream; charset=utf-8',
+        # processData: false,
         data: response
+        url: @context.baseUrl + '/auth/google_oauth2/callback'
         success: (json) ->
+          console.log("success")
           # response from server
           return
     else
@@ -27,14 +28,7 @@ module.exports = React.createClass
       # google authentication failed
 
   onAuthClick: (e) ->
-    console.log("CLICKED!")
-    # should we add a cookie policy?
-    gapi.auth.authorize {
-      immediate: false
-      response_type: 'code'
-      client_id: '841046533743-ttk5o9p3td2bq62ob5o0ou9qfckkomqi.apps.googleusercontent.com'
-      scope: 'email profile https://www.googleapis.com/auth/calendar'
-    }, @onGoogleSignin
+    auth2.grantOfflineAccess({'redirect_uri': 'postmessage'}).then(@onGoogleSignin)
 
   render: ->
     { div } = React.DOM
