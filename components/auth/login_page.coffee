@@ -34,6 +34,9 @@ module.exports = React.createClass
         success: (response) =>
           AuthActions.loginUser(response)
           @setState pendingLogin: false
+        error: (error) =>
+          console.log(error)
+          console.log("umm ok")
 
     else
       # google authentication failed

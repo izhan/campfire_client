@@ -4,7 +4,7 @@ $ = require('jquery');
 ApiMixin = require('../mixins/api_mixin.coffee')
 AuthActions = require('../actions/auth_action.coffee')
 
-module.exports = Reflux.createStore({
+module.exports = Reflux.createStore
   listenables: [AuthActions]
   mixins: [ApiMixin]
 
@@ -18,7 +18,10 @@ module.exports = Reflux.createStore({
 
   getCurrentUser: -> @data.currentUser
 
-  logoutUser: -> @trigger()
+  logoutUser: -> 
+    localStorage.removeItem("jwt")
+    @data.currentUser = null
+    @trigger()
 
   loginUser: (response) ->
     localStorage.setItem("jwt", response.jwt)
@@ -37,5 +40,3 @@ module.exports = Reflux.createStore({
           console.log(response)
           @data.currentUser = response.user
           @trigger()
-
-})
