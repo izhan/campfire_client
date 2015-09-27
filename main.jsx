@@ -1,4 +1,4 @@
-require('./assets/app.css');
+require('./assets/app.scss');
 require('./assets/fullcalendar.min.css');
 
 require('./assets/home.scss')
