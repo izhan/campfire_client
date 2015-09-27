@@ -8,6 +8,7 @@ var AuthActions = require('../../actions/auth_action.coffee')
 var $ = require('jquery');
 var RouteHandler = Router.RouteHandler;
 
+// TODO add PureRenderMixin to all of these
 module.exports = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
