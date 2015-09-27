@@ -6,12 +6,13 @@
 // entire grid
 
 background: white;
-border-radius: 5px;
-border: 1px solid $GRIDLINE_COLOR;
 padding-top: 10px;
+
+/*border-radius: 5px;
+border: 1px solid $GRIDLINE_COLOR;
 -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
 -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);*/
 
 $GUTTER_LEFT: 37px;
 

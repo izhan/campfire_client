@@ -12,7 +12,9 @@ module.exports = React.createClass
   render: ->
     { div } = React.DOM
 
-    div null,
+    div
+      id: "sidebar-wrapper"
+      
       "CALENDAR"
       if @props.loading
         "WE ARE LOADING"
