@@ -2,6 +2,7 @@ Reflux = require('reflux');
 
 module.exports = Reflux.createActions([
   "loginUser",
-  "logoutUser" # TODO
+  "logoutUser", # TODO
+  "fetchCurrentUser"
 ])
 

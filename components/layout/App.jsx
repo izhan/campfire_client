@@ -43,6 +43,11 @@ module.exports = React.createClass({
     console.log(loggedIn);
   },
 
+  componentWillMount: function() {
+    console.log('app mounted');
+    AuthActions.fetchCurrentUser();
+  },
+
   componentDidMount: function() {
     this.listenTo(AuthStore, this.onAuthChange);
   },

@@ -9,9 +9,6 @@ module.exports = Reflux.createStore({
     currentUser: null
   }
 
-  init: ->
-    @data.loggedIn = localStorage.getItem("jwt")?
-
   # TODO make this a helpers
   getBaseUrl: ->
     devMode = process.env.NODE_ENV == 'development'
@@ -37,15 +34,15 @@ module.exports = Reflux.createStore({
           localStorage.setItem("jwt", jwt)
           console.log(jwt)
           console.log("success")
-          @data.loggedIn = true
+          @data.currentUser = response.user
           @trigger()
-          # response from server
-          return
     else
       # google authentication failed
       console.log("we failed")
 
-  isLoggedIn: -> @data.loggedIn
+  getJwt: -> localStorage.getItem("jwt")
+
+  isLoggedIn: -> @getJwt()?
 
   getCurrentUser: -> @data.currentUser
 
@@ -56,6 +53,19 @@ module.exports = Reflux.createStore({
 
     auth2.grantOfflineAccess({'redirect_uri': 'postmessage'}).then(@onGoogleSignin)
     
-    @data.currentUser = "jkl"
     console.log("logging in user!!")
+
+  fetchCurrentUser: ->
+    if @isLoggedIn()
+      console.log("fetching user")
+      $.ajax
+        type: 'GET'
+        url: @getBaseUrl() + '/auth/current_user'
+        headers: { 'Authorization': @getJwt() }
+        success: (response) =>
+          console.log("omg it works")
+          console.log(response)
+          @data.currentUser = response.user
+          @trigger()
+
 })
