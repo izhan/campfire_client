@@ -10,6 +10,9 @@ module.exports = React.createClass
     currentUser: React.PropTypes.object
   },
 
+  onToggleSidebarClick: ->
+    $("#wrapper").toggleClass("toggled")
+
   onLogoutClick: ->
     AuthActions.logoutUser()
 
@@ -22,6 +25,11 @@ module.exports = React.createClass
     div null,
       "Header"
       @getUserEmail()
+
+      div
+        className: "btn btn-default"
+        onClick: @onToggleSidebarClick
+        "Toggle"
 
       div
         className: "btn btn-default"
