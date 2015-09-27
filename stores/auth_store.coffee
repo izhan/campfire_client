@@ -9,10 +9,16 @@ module.exports = Reflux.createStore({
     currentUser: null
   }
 
+  init: ->
+    @data.loggedIn = localStorage.getItem("jwt")?
+
   # TODO make this a helpers
   getBaseUrl: ->
     devMode = process.env.NODE_ENV == 'development'
     if devMode then 'http://localhost:3000' else 'https://obscure-citadel-9804.herokuapp.com'
+
+  getApiUrl: ->
+    @getBaseUrl() + "/api/v1"
 
   onGoogleSignin: (response) ->
     console.log("signin callback")
@@ -31,12 +37,15 @@ module.exports = Reflux.createStore({
           localStorage.setItem("jwt", jwt)
           console.log(jwt)
           console.log("success")
+          @data.loggedIn = true
           @trigger()
           # response from server
           return
     else
       # google authentication failed
       console.log("we failed")
+
+  isLoggedIn: -> @data.loggedIn
 
   getCurrentUser: -> @data.currentUser
 
