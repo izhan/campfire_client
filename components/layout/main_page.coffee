@@ -1,7 +1,6 @@
 React = require('react')
 Router = require('react-router')
 Reflux = require('reflux')
-$ = require('jquery')
 
 AuthStore = require('../../stores/auth_store.coffee')
 AuthActions = require('../../actions/auth_action.coffee')

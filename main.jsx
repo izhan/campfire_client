@@ -1,4 +1,5 @@
 require('./assets/app.css');
+require('./assets/fullcalendar.min.css');
 
 var React = require('react');
 var Router = require('react-router');

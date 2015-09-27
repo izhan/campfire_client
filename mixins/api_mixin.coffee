@@ -1,5 +1,4 @@
 Promise = require('promise')
-$ = require('jquery');
  
 # TODO i might want to make this a library, not a mixin
 module.exports =

@@ -1,5 +1,4 @@
 React = require('react')
-$ = require('jquery')
 
 ApiMixin = require('../../mixins/api_mixin.coffee')
 AuthActions = require('../../actions/auth_action.coffee')
