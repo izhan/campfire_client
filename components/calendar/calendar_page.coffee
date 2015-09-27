@@ -3,7 +3,7 @@ Reflux = require('reflux')
 
 AuthActions = require('../../actions/auth_action.coffee')
 CalendarListContainer = require('./calendar_list_container.coffee')
-CalendarContainer = require('./calendar_container.coffee')
+Calendar = require('./calendar.coffee')
 
 module.exports = React.createClass
   displayName: "CalendarPage"
@@ -35,5 +35,5 @@ module.exports = React.createClass
 
       React.createElement CalendarListContainer
 
-      React.createElement CalendarContainer
+      React.createElement Calendar
       

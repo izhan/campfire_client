@@ -1,16 +1,30 @@
 React = require('react')
 Reflux = require('reflux')
 
-FullCalendar = require('../../node_modules/fullcalendar/dist/fullcalendar.min.js')
+CalendarActions = require('../../actions/calendar_action.coffee')
+CalendarStore = require('../../stores/calendar_store.coffee')
+
+EventAdapter = require('../../helpers/event_adapter.coffee')
 
 module.exports = React.createClass
   displayName: "Calendar"
+  
+  mixins: [ Reflux.ListenerMixin ]
 
-  propTypes:
-    eventSource: React.PropTypes.func
+  getInitialState: ->
+    events: []
 
-  componentDidMount: ->
-    console.log(FullCalendar)
+  getEvents: (start, end, timezone, callback) ->
+    events = @state.events.filter (ev) -> EventAdapter.isEventInRange(ev, start, end)
+    full_cal_events = (EventAdapter.toFullCalendarEvent(ev) for ev in events)
+    callback(full_cal_events)
+
+  onCalendarEventUpdate: ->
+    @setState events: CalendarStore.getAllEvents()
+    console.log("updated")
+    $("#calendar").fullCalendar("refetchEvents")
+
+  initializeFullCalendar: ->
     $("#calendar").fullCalendar
 
       selectable: true
@@ -35,12 +49,17 @@ module.exports = React.createClass
         day: "Day"
       allDayText: ""
 
-      events: @props.eventSource
-    
+      events: @getEvents
 
-  render: ->
+  componentDidMount: ->
+    @listenTo CalendarStore, @onCalendarEventUpdate
+    @initializeFullCalendar()
+
+  render: -> 
     { div } = React.DOM
 
     div
       id: "calendar"
       "poop"
+
+

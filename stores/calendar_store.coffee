@@ -42,7 +42,6 @@ module.exports = Reflux.createStore
   fetchCalendar: (gCalId) ->
     onSuccess = (response) =>
       console.log("fetched calendars")
-      console.log(response)
       @data.calendarMap[gCalId] = response
       @trigger()
     onError = (error) =>
