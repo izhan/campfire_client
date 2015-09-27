@@ -1,14 +1,10 @@
 React = require('react')
 Reflux = require('reflux')
 
+CalendarContainer = require('./calendar_container.coffee')
+
 module.exports = React.createClass
   displayName: "CalendarList"
-  
-  renderCalendar: (cal) ->
-    { div } = React.DOM
-
-    div null,
-      cal.summary
 
   render: ->
     { div } = React.DOM
@@ -19,4 +15,6 @@ module.exports = React.createClass
         "WE ARE LOADING"
       else
         for cal in @props.calendars
-          @renderCalendar(cal)
+          React.createElement CalendarContainer,
+            key: cal.id
+            calendar: cal

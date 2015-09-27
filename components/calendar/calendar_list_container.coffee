@@ -15,23 +15,20 @@ module.exports = React.createClass
     loading: true
     calendars: null
 
-  onCalendarFetch: ->
+  onCalendarListFetch: ->
     calendars = CalendarStore.getCalendarList()
     if calendars
-      console.log('settinga')
       @setState {
         loading: false
         calendars: calendars
       }
-      console.log('asdfadsfadfs')
-      console.log("finished")
 
   componentWillMount: ->
     console.log("gonna fetch")
     CalendarActions.fetchCalendarList()
 
   componentDidMount: ->
-    @listenTo CalendarStore, @onCalendarFetch
+    @listenTo CalendarStore, @onCalendarListFetch
 
   render: -> 
     React.createElement CalendarList,
