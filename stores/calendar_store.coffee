@@ -7,12 +7,25 @@ module.exports = Reflux.createStore
   listenables: [CalendarActions]
   mixins: [ApiMixin]
 
+  data: {
+    calendarList: null
+  }
+
+  init: -> 
+    @data.calendarMap = {}
+
   getJwt: -> localStorage.getItem("jwt")
+
+  getCalendarList: -> @data.calendarList
+
+  getCalendar: (gCalId) ->
+    @data.calendarMap[gCalId]
 
   fetchCalendarList: ->
     onSuccess = (response) =>
       console.log("fetched list")
       console.log(response)
+      @data.calendarList = response
       @trigger()
     onError = (error) =>
       console.log(error)
@@ -24,6 +37,7 @@ module.exports = Reflux.createStore
     onSuccess = (response) =>
       console.log("fetched calendars")
       console.log(response)
+      @data.calendarMap[gCalId] = response
       @trigger()
     onError = (error) =>
       console.log(error)

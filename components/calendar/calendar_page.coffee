@@ -1,10 +1,8 @@
 React = require('react')
-$ = require('jquery');
 Reflux = require('reflux')
 
 AuthActions = require('../../actions/auth_action.coffee')
-CalendarActions = require('../../actions/calendar_action.coffee')
-CalendarStore = require('../../stores/calendar_store.coffee')
+CalendarListContainer = require('./calendar_list_container.coffee')
 
 module.exports = React.createClass
   mixins: [ Reflux.ListenerMixin ]
@@ -12,16 +10,6 @@ module.exports = React.createClass
   contextTypes: {
     currentUser: React.PropTypes.object
   },
-
-  onCalendarFetch: ->
-    console.log("lol calendar fetch")
-
-  componentWillMount: ->
-    console.log("gonna fetch")
-    CalendarActions.fetchCalendarList()
-
-  componentDidMount: ->
-    @listenTo CalendarStore, @onCalendarFetch
 
   onLogoutClick: ->
     AuthActions.logoutUser()
@@ -41,3 +29,5 @@ module.exports = React.createClass
         className: "potato"
         onClick: @onLogoutClick
         "Logout"
+
+      React.createElement CalendarListContainer
