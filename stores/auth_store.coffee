@@ -1,5 +1,4 @@
 Reflux = require('reflux')
-$ = require('jquery');
 
 ApiMixin = require('../mixins/api_mixin.coffee')
 AuthActions = require('../actions/auth_action.coffee')
@@ -30,13 +29,14 @@ module.exports = Reflux.createStore
 
   fetchCurrentUser: ->
     if @isLoggedIn()
-      console.log("fetching user")
-      $.ajax
-        type: 'GET'
-        url: @getBaseUrl() + '/auth/current_user'
-        headers: { 'Authorization': @getJwt() }
-        success: (response) =>
-          console.log("omg it works")
-          console.log(response)
-          @data.currentUser = response.user
-          @trigger()
+      onSuccess = (response) =>
+        console.log("omg it works")
+        console.log(response)
+        @data.currentUser = response.user
+        @trigger()
+      onError = (error) =>
+        console.log(error)
+        console.log('failed to fetch current user')
+
+      @fetchFromNonApi("/auth/current_user").then(onSuccess, onError)
+      

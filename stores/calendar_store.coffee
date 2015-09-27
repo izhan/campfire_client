@@ -1,5 +1,4 @@
 Reflux = require('reflux')
-$ = require('jquery');
 
 ApiMixin = require('../mixins/api_mixin.coffee')
 CalendarActions = require('../actions/calendar_action.coffee')
@@ -11,13 +10,12 @@ module.exports = Reflux.createStore
   getJwt: -> localStorage.getItem("jwt")
 
   fetchCalendarList: ->
-    console.log("asdfasfdafsd")
-    $.ajax
-      type: 'GET'
-      url: @getApiUrl() + '/calendar_lists'
-      headers: { 'Authorization': @getJwt() }
-      success: (response) =>
-        console.log("fetched list")
-        console.log(response)
-        @trigger()
-        
+    onSuccess = (response) =>
+      console.log("fetched list")
+      console.log(response)
+      @trigger()
+    onError = (error) =>
+      console.log(error)
+      console.log("calendar list fetch failed")
+
+    @fetchFromApi("/calendar_lists").then(onSuccess, onError)
