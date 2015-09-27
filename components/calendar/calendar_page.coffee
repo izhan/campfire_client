@@ -29,7 +29,7 @@ module.exports = React.createClass
 
 
       div
-        className: "potato"
+        className: "btn btn-default"
         onClick: @onLogoutClick
         "Logout"
 
