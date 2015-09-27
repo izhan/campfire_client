@@ -28,6 +28,7 @@
     "react-router": "^0.12.4",
     "reflux": "^0.2.12",
     "jquery": "^2.1.4",
+    "promise": "^7.0.4",
     "reqwest": "^1.1.5",
     "style-loader": "^0.8.3",
     "webpack": "^1.6.0",
