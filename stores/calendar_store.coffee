@@ -14,7 +14,7 @@ module.exports = Reflux.createStore
     console.log("asdfasfdafsd")
     $.ajax
       type: 'GET'
-      url: @getApiUrl() + '/calendar_list'
+      url: @getApiUrl() + '/calendar_lists'
       headers: { 'Authorization': @getJwt() }
       success: (response) =>
         console.log("fetched list")
