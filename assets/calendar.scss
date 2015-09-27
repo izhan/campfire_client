@@ -1,0 +1,166 @@
+@import "variables";
+
+// helps override everything
+#calendar.fc {
+
+// entire grid
+
+background: white;
+border-radius: 5px;
+border: 1px solid $GRIDLINE_COLOR;
+padding-top: 10px;
+-webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+
+$GUTTER_LEFT: 37px;
+
+.fc-day-grid {
+  margin-top: 20px;
+}
+
+.fc-time-grid-container, .fc-day-grid, thead .fc-row.fc-widget-header {
+  margin-left: $GUTTER_LEFT;
+}
+thead td.fc-widget-header {
+  background: $THEME_LIGHT_BLUE;
+}
+
+// all buttons
+button {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+// header
+.fc-toolbar {
+  position: relative;
+  height: 30px;
+}
+
+// left header
+
+$LEFT_HEIGHT: 20px;
+$TRUE_LEFT_HEIGHT: $LEFT_HEIGHT + 4px; // accounting for some borders
+
+.fc-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: $GUTTER_LEFT + 40px;
+  margin: auto;
+  height: $TRUE_LEFT_HEIGHT; 
+  border: 1px $GRIDLINE_COLOR solid;
+  border-radius: 10px;
+  padding: 1px;
+  background: $THEME_LIGHT_GREY;
+  button {
+    background: $THEME_BLUE;
+    border-radius: $LEFT_HEIGHT/2;
+    height: $LEFT_HEIGHT;
+    width: $LEFT_HEIGHT;
+    padding: 0;
+  }
+  .fc-icon {
+    color: white;
+    font-size: 11px;
+    vertical-align: top;
+    top: 4px;
+    &:after {
+      font-weight: normal;
+      font-family: Times;
+      left: 0px;
+    }
+  }
+
+  // title
+  h2 {
+    line-height: $LEFT_HEIGHT;
+    font-size: 14px;
+    color: $TEXT_GREY;
+    min-width: 100px;
+  }
+}
+
+// right header
+
+$RIGHT_HEIGHT: 24px;
+.fc-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  margin: auto;
+  height: $RIGHT_HEIGHT;
+  .fc-button {
+    text-shadow: none;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 0 12px;
+    &.fc-state-active {
+      color: white;
+      background: $THEME_BLUE;
+    }
+  }
+}
+
+// all-day top
+.fc-day-grid .fc-bg table {
+  border-bottom: 1px solid;
+}
+
+hr.fc-widget-header {
+  margin-top: 15px;
+}
+
+.fc-widget-header {
+  border:none;
+}
+
+// gridlines
+.fc-minor td {
+  border-top: none;
+}
+
+th, td, hr, thead, tbody, .fc-popover {
+  border-color: $GRIDLINE_COLOR;
+}
+
+.fc-view > table > tbody > tr > td {
+  border-top: none; // get rid of border around entire grid
+  border-left: none;
+}
+
+.fc-day-grid .fc-bg td.fc-axis {
+  border-bottom-color: white;
+  border-top-color: white;
+}
+
+.fc-row:first-child table {
+  border-top: inherit;
+}
+
+// weekday labels
+
+$LABEL_HEIGHT: 40px;
+
+thead .fc-row.fc-widget-header {
+  height: $LABEL_HEIGHT;
+  line-height: $LABEL_HEIGHT;
+  color: $BOLD_TEXT_GREY;
+}
+
+// times
+.fc-time {
+  position: relative;
+  top: -12px;
+  right: 5px;
+  border: none;
+  color: $BOLD_TEXT_GREY; 
+  border-right: 1px solid;
+}
+
+
+}

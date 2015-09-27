@@ -59,6 +59,5 @@ module.exports = React.createClass
 
     div
       id: "calendar"
-      "poop"
 
 
