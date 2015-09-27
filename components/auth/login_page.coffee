@@ -16,6 +16,8 @@ module.exports = React.createClass
     pendingLogin: false
 
   onAuthClick: ->
+    return if @state.pendingLogin
+    
     auth2.grantOfflineAccess({'redirect_uri': 'postmessage'}).then(@onGoogleSignin)
     console.log("logging in user!!")
 
@@ -43,24 +45,36 @@ module.exports = React.createClass
       # google authentication failed
       console.log("we failed")
 
+  renderGoogleAuthButton: ->
+    { div } = React.DOM
+
+    className = if @state.pendingLogin then "google-auth-button disabled" else "google-auth-button"
+    div
+      className: className
+      onClick: @onAuthClick
+
   renderLoginBox: ->
     { div, img } = React.DOM
 
     div
       className: "login-box"
+      
+      @renderGoogleAuthButton()
+
       if @state.pendingLogin
-        div null,
-          "Logging you in..."
+        div
+          className: "login-prompt"
           div
-            className: "spinner-loader"
+            className: "login-loading-message"
+            "Fetching your info..."
+          div
+            className: "login-spinner spinner-loader"
             "Loading..."
       else
-        div null,
-          "Log in to get started!"
-      
-      div
-        className: "google-auth-button"
-        onClick: @onAuthClick
+        div
+          className: "login-prompt"
+          div null,
+            "Log in to get started!"
 
   renderLoginFooter: ->
     { div, img } = React.DOM
@@ -99,6 +113,9 @@ module.exports = React.createClass
             div
               className: "login-title"
               "Campfire"
+            div
+              className: "login-subtitle"
+              "Right now it's just a calendar"
 
             @renderLoginBox()
 

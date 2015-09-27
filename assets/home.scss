@@ -24,12 +24,18 @@
   font-size: 72px;
 }
 
+.login-subtitle {
+  font-family: $aleo-regular;
+  font-size: 24px;
+  color: $LIGHT_TEXT_GREY;
+}
 
 .login-box {
   width: 300px;
-  height: 275px;
-  margin: 0 auto;
+  height: 225px;
+  margin: 25px auto 0 auto;
   background: rgba(255, 255, 255, .5);
+  padding-top: 25px;
 }
 
 .google-auth-button {
@@ -44,6 +50,21 @@
   &:active {
     background-image: url("img/btn_google_pressed.png"); 
   }
+  &.disabled {
+    cursor: initial;
+    background-image: url("img/btn_google_disabled.png"); 
+  }
+}
+
+.login-prompt {
+  font-family: $aleo-regular;
+  margin-top: 20px;
+  font-size: 18px;
+  color: $LIGHT_TEXT_GREY;
+}
+
+.login-loading-message {
+  margin-bottom: 10px;
 }
 
 // begin footer
