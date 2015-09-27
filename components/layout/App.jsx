@@ -11,39 +11,14 @@ var RouteHandler = Router.RouteHandler;
 module.exports = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
-  childContextTypes: {
-    baseUrl: React.PropTypes.string
-  },
+  onAuthChange: function() {
+    var currentUser = AuthStore.getCurrentUser();
 
-  getChildContext: function () {
-    return {
-      baseUrl: this.getBaseUrl()
-    };
-  },
-
-  getBaseUrl: function() {
-    return process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://obscure-citadel-9804.herokuapp.com';
-  },
-
-  onAuthChange: function(current_user) {
     console.log("auth changed!!!");
-    console.log(current_user);
+    console.log(currentUser);
   },
 
   componentDidMount: function() {
-    var url = this.getBaseUrl()
-
-    console.log("hello world");
-    $.ajax({
-      url: url + "/calendar_list",
-      crossDomain: true,
-      dataType: 'json',
-      success: function(data) {
-        console.log(data);
-        AuthStore.loginUser();
-      }
-    });
-
     this.listenTo(AuthStore, this.onAuthChange);
   },
 
