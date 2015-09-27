@@ -26,9 +26,8 @@ module.exports = React.createClass
 
   initializeFullCalendar: ->
     $("#calendar").fullCalendar
-
-      selectable: true
-      selectHelper: true
+      # selectable: true
+      # selectHelper: true
       editable: false # TODO
       eventLimit: true
 
