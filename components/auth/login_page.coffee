@@ -52,13 +52,12 @@ module.exports = React.createClass
         className: "container"
         div
           className: "row login-header"
-
           div
             className: "col-xs-12 text-center"
-
             # putting it in public/ temporarily
             img
               src: "./img/tent_with_circle.png"
+              className: "tent-with-circle"
               
             div
               className: "login-title"
@@ -73,3 +72,17 @@ module.exports = React.createClass
               className: "potato"
               onClick: @onAuthClick
               "asdf"
+
+      div 
+        className: "login-footer"
+        div
+          className: "sky-footer container"
+          div
+            className: "sun"
+        div
+          className: "grass-footer"
+          div
+            className: "container"
+            img
+              src: "./img/trees_and_stuff.png"
+              className: "trees-and-stuff"

@@ -10,5 +10,43 @@
 .login-title {
   color: $THEME_ORANGE;
   font-family: $aleo-bold;
-  font-size: 64px;
+  font-size: 72px;
+}
+
+.tent-with-circle {
+  height: 120px;
+}
+
+.login-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $SKY_BLUE;
+}
+
+.sky-footer {
+  height: 200px;
+}
+
+.grass-footer {
+  height: 100px;
+  background: $GRASS_GREEN;
+  position: relative;
+}
+
+.trees-and-stuff {
+  position: absolute;
+  top: -100px;
+  left: 100px;
+}
+
+.sun {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: $SUN_YELLOW;
 }

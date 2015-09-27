@@ -7,7 +7,7 @@ var RouteHandler = Router.RouteHandler;
 module.exports = React.createClass({
   render: function () {
     return (
-      <div>
+      <div className="page-wrapper">
         <RouteHandler />
       </div>
     );
