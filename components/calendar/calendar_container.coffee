@@ -26,7 +26,6 @@ module.exports = React.createClass
         loading: false
 
   componentWillMount: ->  
-    return
     CalendarActions.fetchCalendar(@props.calendar.id)
 
   componentDidMount: ->
