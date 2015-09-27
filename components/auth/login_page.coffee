@@ -43,6 +43,44 @@ module.exports = React.createClass
       # google authentication failed
       console.log("we failed")
 
+  renderLoginBox: ->
+    { div } = React.DOM
+
+    div
+      className: "login-box"
+      if @state.pendingLogin
+        div null,
+          "Logging you in..."
+          div
+            className: "spinner-loader"
+            "Loading..."
+      else
+        div null,
+          "Log in to get started!"
+        
+      div
+        className: "potato"
+        onClick: @onAuthClick
+        "asdf"
+
+  renderLoginFooter: ->
+    { div, img } = React.DOM
+
+    div 
+      className: "login-footer"
+      div
+        className: "sky-footer container"
+        div
+          className: "sun"
+      div
+        className: "grass-footer"
+        div
+          className: "container"
+          img
+            src: "./img/trees_and_stuff.png"
+            className: "trees-and-stuff"
+
+
   render: ->
     { div, span, img } = React.DOM
 
@@ -63,26 +101,9 @@ module.exports = React.createClass
               className: "login-title"
               "Campfire"
 
-            if @state.pendingLogin
-              "Logging you in..."
-            else
-              "Please Login to Continue"
-              
-            div
-              className: "potato"
-              onClick: @onAuthClick
-              "asdf"
+            @renderLoginBox()
 
-      div 
-        className: "login-footer"
-        div
-          className: "sky-footer container"
-          div
-            className: "sun"
-        div
-          className: "grass-footer"
-          div
-            className: "container"
-            img
-              src: "./img/trees_and_stuff.png"
-              className: "trees-and-stuff"
+      @renderLoginFooter()
+
+
+      

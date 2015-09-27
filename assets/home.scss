@@ -7,6 +7,11 @@
   padding-top: 50px;
 }
 
+.login-header {
+  position: relative;
+  z-index: 11;
+}
+
 .login-title {
   color: $THEME_ORANGE;
   font-family: $aleo-bold;
@@ -17,8 +22,16 @@
   height: 120px;
 }
 
+.login-box {
+  width: 300px;
+  height: 275px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, .5);
+}
+
 .login-footer {
   position: absolute;
+  z-index: 10;
   left: 0;
   right: 0;
   bottom: 0;
