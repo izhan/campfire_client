@@ -4,6 +4,8 @@ Reflux = require('reflux')
 CalendarActions = require('../../actions/calendar_action.coffee')
 CalendarStore = require('../../stores/calendar_store.coffee')
 
+EventAdapter = require('../../helpers/event_adapter.coffee')
+
 Calendar = require('./calendar.coffee')
 
 module.exports = React.createClass
@@ -15,9 +17,15 @@ module.exports = React.createClass
     events: []
 
   getEvents: (start, end, timezone, callback) ->
-    debugger
+    events = @state.events.filter (ev) -> EventAdapter.isEventInRange(ev, start, end)
+    full_cal_events = (EventAdapter.toFullCalendarEvent(ev) for ev in events)
 
-  onCalendarListFetch: ->
+    console.log(@state.events)
+    console.log(events)
+    console.log(full_cal_events)
+    callback(full_cal_events)
+
+  onCalendarEventUpdate: ->
     @setState events: CalendarStore.getAllEvents()
 
   componentDidMount: ->
