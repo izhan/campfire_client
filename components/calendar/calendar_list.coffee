@@ -6,6 +6,9 @@ CalendarContainer = require('./calendar_container.coffee')
 module.exports = React.createClass
   displayName: "CalendarList"
 
+  propTypes:
+    calendars: React.PropTypes.array
+
   render: ->
     { div } = React.DOM
 

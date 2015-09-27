@@ -4,6 +4,9 @@ Reflux = require('reflux')
 module.exports = React.createClass
   displayName: "Calendar"
 
+  propTypes:
+    calendar: React.PropTypes.object
+
   render: ->
     { div } = React.DOM
 

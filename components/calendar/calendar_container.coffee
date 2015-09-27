@@ -8,6 +8,9 @@ Calendar = require('./calendar.coffee')
 
 module.exports = React.createClass
   displayName: "CalendarContainer"
+
+  propTypes:
+    calendar: React.PropTypes.object
   
   mixins: [ Reflux.ListenerMixin ]
 
