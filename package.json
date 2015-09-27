@@ -25,11 +25,12 @@
     "jsx-loader": "^0.12.2",
     "coffee-loader": "^0.7.2",
     "sass-loader": "^2.0.1",
+    "style-loader": "^0.8.3",
+    "file-loader": "^0.8.4",
     "react": "^0.12.2",
     "react-router": "^0.12.4",
     "reflux": "^0.2.12",
     "promise": "^7.0.4",
-    "style-loader": "^0.8.3",
     "webpack": "^1.6.0",
     "webpack-dev-server": "^1.8.0",
     "express": "^4.13.1"
