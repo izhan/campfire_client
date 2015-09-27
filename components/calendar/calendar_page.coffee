@@ -13,7 +13,11 @@ module.exports = React.createClass
     div null,
       React.createElement Header
 
-      React.createElement CalendarListContainer
+      div
+        id: "wrapper"
+        React.createElement CalendarListContainer
 
-      React.createElement Calendar
-      
+        div
+          id: "page-content-wrapper"
+          React.createElement Calendar
+        

@@ -3,6 +3,7 @@ require('./assets/fullcalendar.min.css');
 
 require('./assets/home.scss')
 require('./assets/calendar.scss')
+require('./assets/sidebar.css')
 
 require('./assets/fonts.scss')
 
