@@ -27,6 +27,11 @@ module.exports = Reflux.createStore
       ret.push events...
     ret
 
+  clearAllEvents: ->
+    @data.calendarList = null
+    @data.calendarMap = {}
+    @trigger()
+
   fetchCalendarList: ->
     onSuccess = (response) =>
       console.log("fetched list")

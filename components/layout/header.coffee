@@ -1,6 +1,7 @@
 React = require('react')
 
 AuthActions = require('../../actions/auth_action.coffee')
+CalendarActions = require('../../actions/calendar_action.coffee')
 
 module.exports = React.createClass
   displayName: "Header"
@@ -15,23 +16,27 @@ module.exports = React.createClass
 
   onLogoutClick: ->
     AuthActions.logoutUser()
+    CalendarActions.clearAllEvents()
 
   getUserEmail: ->
     if @context.currentUser? then @context.currentUser.email else ""
 
   render: ->
-    { div } = React.DOM
+    { div, nav } = React.DOM
 
-    div null,
-      "Header"
-      @getUserEmail()
-
+    nav
+      className: "navbar navbar-default navbar-static-top header-navbar"
       div
-        className: "btn btn-default"
-        onClick: @onToggleSidebarClick
-        "Toggle"
+        className: "container"
+        "Header"
+        @getUserEmail()
 
-      div
-        className: "btn btn-default"
-        onClick: @onLogoutClick
-        "Logout"
+        div
+          className: "btn btn-default"
+          onClick: @onToggleSidebarClick
+          "Toggle"
+
+        div
+          className: "btn btn-default"
+          onClick: @onLogoutClick
+          "Logout"

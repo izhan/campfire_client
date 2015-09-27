@@ -4,6 +4,7 @@ require('./assets/fullcalendar.min.css');
 require('./assets/home.scss')
 require('./assets/calendar.scss')
 require('./assets/sidebar.scss')
+require('./assets/header.scss')
 
 require('./assets/fonts.scss')
 
