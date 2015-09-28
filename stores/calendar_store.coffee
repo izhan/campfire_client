@@ -7,34 +7,44 @@ module.exports = Reflux.createStore
   listenables: [CalendarActions]
   mixins: [ApiMixin]
 
+  # TODO we don't need both calendarList and calendarMap
   data: {
     calendarList: null
   }
 
+  _decorateEvent: (ev, gCalId) ->
+    calInfo = @data.calendarMap[gCalId]
+    ev.foregroundColor = calInfo.foregroundColor
+    ev.backgroundColor = calInfo.backgroundColor
+    ev
+
   init: -> 
-    @data.calendarMap = {}
-    @data.visibilityMap = {}
+    @data.calendarMap = {} # id to calendarObject
+    @data.calendarEventMap = {} # id to events
+    @data.visibilityMap = {} # is calendar visible?
 
   getJwt: -> localStorage.getItem("jwt")
 
   getCalendarList: -> @data.calendarList
 
   getCalendar: (gCalId) ->
-    @data.calendarMap[gCalId]
+    @data.calendarEventMap[gCalId]
 
   hasCalendarLoaded: (gCalId) ->
-    @data.calendarMap[gCalId]?
+    @data.calendarEventMap[gCalId]?
 
   getAllEvents: ->
     ret = []
-    for id, events of @data.calendarMap
+    for id, events of @data.calendarEventMap
       if @data.visibilityMap[id]
-        ret.push events...
+        for ev in events
+          ret.push @_decorateEvent(ev, id)
     ret
 
   clearAllEvents: ->
     @data.calendarList = null
     @data.calendarMap = {}
+    @data.calendarEventMap = {}
     @data.visibilityMap = {}
     @trigger()
 
@@ -43,6 +53,8 @@ module.exports = Reflux.createStore
       console.log("fetched list")
       console.log(response)
       @data.calendarList = response
+      for cal in response
+        @data.calendarMap[cal.id] = cal
       @trigger()
     onError = (error) =>
       console.log(error)
@@ -53,7 +65,7 @@ module.exports = Reflux.createStore
   fetchCalendar: (gCalId) ->
     onSuccess = (response) =>
       console.log("fetched calendars")
-      @data.calendarMap[gCalId] = response
+      @data.calendarEventMap[gCalId] = response
       @data.visibilityMap[gCalId] ?= true
       @trigger()
     onError = (error) =>

@@ -30,7 +30,7 @@ module.exports = React.createClass
       # selectHelper: true
       editable: false # TODO
       eventLimit: true
-      displayEventTime: false
+      # displayEventTime: false
 
       defaultView: 'agendaWeek'
 

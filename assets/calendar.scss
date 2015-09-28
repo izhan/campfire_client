@@ -153,5 +153,17 @@ thead .fc-row.fc-widget-header {
   color: $BOLD_TEXT_GREY;
 }
 
+.fc-event {
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  .fc-time {
+    color: #333;
+  }
+}
+
+.fc-axis.fc-time span {
+  font-size: 12px;
+}
+
 
 }

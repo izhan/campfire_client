@@ -22,4 +22,8 @@ module.exports =
       allDay: @isAllDayEvent(ev)
       start: @getStart(ev)
       end: @getEnd(ev)
+
+      # added by calendar store decorator
+      textColor: ev.foregroundColor
+      backgroundColor: ev.backgroundColor
     }
