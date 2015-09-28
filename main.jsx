@@ -6,7 +6,8 @@ require('./assets/calendar.scss')
 require('./assets/calendar_list.scss')
 require('./assets/sidebar.scss')
 require('./assets/header.scss')
-require('./assets/spinner.css')
+require('./assets/spinner.scss')
+require('./assets/circle_spinner.scss')
 
 require('./assets/fonts.scss')
 

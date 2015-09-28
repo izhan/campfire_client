@@ -19,9 +19,7 @@ module.exports = React.createClass
     calendars: null
 
   onCalendarFetch: ->
-    calendars = CalendarStore.getCalendar()
-
-    if calendars
+    if CalendarStore.hasCalendarLoaded(@props.calendar.id)
       @setState
         loading: false
 

@@ -22,6 +22,9 @@ module.exports = Reflux.createStore
   getCalendar: (gCalId) ->
     @data.calendarMap[gCalId]
 
+  hasCalendarLoaded: (gCalId) ->
+    @data.calendarMap[gCalId]?
+
   getAllEvents: ->
     ret = []
     for id, events of @data.calendarMap

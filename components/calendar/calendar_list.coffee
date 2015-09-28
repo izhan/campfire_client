@@ -1,7 +1,7 @@
 React = require('react')
 Reflux = require('reflux')
 
-CalendarContainer = require('./calendar_list_item_container.coffee')
+CalendarListItemContainer = require('./calendar_list_item_container.coffee')
 
 module.exports = React.createClass
   displayName: "CalendarList"
@@ -28,6 +28,6 @@ module.exports = React.createClass
               "Loading..."
         else
           for cal in @props.calendars
-            React.createElement CalendarContainer,
+            React.createElement CalendarListItemContainer,
               key: cal.id
               calendar: cal
