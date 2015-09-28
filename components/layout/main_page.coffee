@@ -7,7 +7,6 @@ AuthActions = require('../../actions/auth_action.coffee')
 CalendarPage = require("../calendar/calendar_page.coffee")
 LoginPage = require("../auth/login_page.coffee")
 
-# TODO add PureRenderMixin to all of these
 module.exports = React.createClass
   mixins: [
     Reflux.ListenerMixin
@@ -26,6 +25,7 @@ module.exports = React.createClass
     loggedIn: false
     currentUser: null
 
+  # small lag right now in redirection while fetching current user
   onAuthChange: ->
     currentUser = AuthStore.getCurrentUser()
     loggedIn = AuthStore.isLoggedIn()
@@ -33,12 +33,8 @@ module.exports = React.createClass
     @setState
       loggedIn: loggedIn
       currentUser: currentUser
-    console.log 'auth changed!!!'
-    console.log currentUser
-    console.log loggedIn
 
   componentWillMount: ->
-    console.log 'app mounted'
     AuthActions.fetchCurrentUser()
 
   componentDidMount: ->

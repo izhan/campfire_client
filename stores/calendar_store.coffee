@@ -50,27 +50,21 @@ module.exports = Reflux.createStore
 
   fetchCalendarList: ->
     onSuccess = (response) =>
-      console.log("fetched list")
-      console.log(response)
       @data.calendarList = response
       for cal in response
         @data.calendarMap[cal.id] = cal
       @trigger()
     onError = (error) =>
-      console.log(error)
-      console.log("calendar list fetch failed")
 
     @fetchFromApi("/calendar_lists").then(onSuccess, onError)
 
   fetchCalendar: (gCalId) ->
     onSuccess = (response) =>
-      console.log("fetched calendars")
       @data.calendarEventMap[gCalId] = response
       @data.visibilityMap[gCalId] ?= true
       @trigger()
     onError = (error) =>
       console.log(error)
-      console.log("calendars fetch failed")
 
     opts =
       data:

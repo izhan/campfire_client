@@ -30,13 +30,10 @@ module.exports = Reflux.createStore
   fetchCurrentUser: ->
     if @isLoggedIn()
       onSuccess = (response) =>
-        console.log("omg it works")
-        console.log(response)
         @data.currentUser = response.user
         @trigger()
       onError = (error) =>
         console.log(error)
-        console.log('failed to fetch current user')
 
       @fetchFromNonApi("/auth/current_user").then(onSuccess, onError)
       

@@ -17,21 +17,15 @@ module.exports = React.createClass
 
   onAuthClick: ->
     return if @state.pendingLogin
-    
     auth2.grantOfflineAccess({'redirect_uri': 'postmessage'}).then(@onGoogleSignin)
-    console.log("logging in user!!")
 
   onGoogleSignin: (response) ->
-    console.log("signin callback")
     if response and response["code"]
-      console.log('gonna post')
       @setState pendingLogin: true
 
       # google authentication succeed, now post data to server and handle data securely
       $.ajax
         type: 'POST'
-        # contentType: 'application/octet-stream; charset=utf-8',
-        # processData: false,
         data: response
         url: @getBaseUrl() + '/auth/google_oauth2/callback'
         success: (response) =>
@@ -39,11 +33,10 @@ module.exports = React.createClass
           @setState pendingLogin: false
         error: (error) =>
           console.log(error)
-          console.log("umm ok")
 
     else
       # google authentication failed
-      console.log("we failed")
+      console.log("google auth failed.  why u no trust me?")
 
   renderGoogleAuthButton: ->
     { div } = React.DOM

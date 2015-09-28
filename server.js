@@ -8,7 +8,6 @@ var webpack = require('webpack');
 var app = express();
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
-console.log(isDevelopment);
 var static_path = path.join(__dirname, 'public');
 
 app.use(express.static(static_path))

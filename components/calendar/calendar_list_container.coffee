@@ -24,7 +24,6 @@ module.exports = React.createClass
       }
 
   componentWillMount: ->
-    console.log("gonna fetch")
     CalendarActions.fetchCalendarList()
 
   componentDidMount: ->

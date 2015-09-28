@@ -21,16 +21,12 @@ module.exports = React.createClass
 
   onCalendarEventUpdate: ->
     @setState events: CalendarStore.getAllEvents()
-    console.log("updated")
     $("#calendar").fullCalendar("refetchEvents")
 
   initializeFullCalendar: ->
     $("#calendar").fullCalendar
-      # selectable: true
-      # selectHelper: true
-      editable: false # TODO
+      editable: false # readonly for now
       eventLimit: true
-      # displayEventTime: false
 
       defaultView: 'agendaWeek'
 
@@ -48,7 +44,9 @@ module.exports = React.createClass
         week: "Week"
         day: "Day"
       allDayText: ""
-      aspectRatio: 2
+
+      # works well on macbooks and your typical fullsize desktop/laptop screen
+      aspectRatio: 2 
 
       events: @getEvents
 

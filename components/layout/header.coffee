@@ -6,7 +6,7 @@ CalendarActions = require('../../actions/calendar_action.coffee')
 module.exports = React.createClass
   displayName: "Header"
 
-  # TODO make this a mixin
+  # this could be a mixin in the future
   contextTypes: {
     currentUser: React.PropTypes.object
   },
@@ -18,7 +18,7 @@ module.exports = React.createClass
     AuthActions.logoutUser()
     CalendarActions.clearAllEvents()
 
-  # currently unused
+  # currently unused.  can be removed
   getUserEmail: ->
     if @context.currentUser? then @context.currentUser.email else ""
 
@@ -32,7 +32,6 @@ module.exports = React.createClass
         className: "navbar-brand header-center"
         img
           src: "./img/tent_only.png"
-
 
       div
         className: "navbar-brand"
