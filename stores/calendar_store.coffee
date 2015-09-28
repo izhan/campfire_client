@@ -13,6 +13,7 @@ module.exports = Reflux.createStore
 
   init: -> 
     @data.calendarMap = {}
+    @data.visibilityMap = {}
 
   getJwt: -> localStorage.getItem("jwt")
 
@@ -24,12 +25,14 @@ module.exports = Reflux.createStore
   getAllEvents: ->
     ret = []
     for id, events of @data.calendarMap
-      ret.push events...
+      if @data.visibilityMap[id]
+        ret.push events...
     ret
 
   clearAllEvents: ->
     @data.calendarList = null
     @data.calendarMap = {}
+    @data.visibilityMap = {}
     @trigger()
 
   fetchCalendarList: ->
@@ -48,6 +51,7 @@ module.exports = Reflux.createStore
     onSuccess = (response) =>
       console.log("fetched calendars")
       @data.calendarMap[gCalId] = response
+      @data.visibilityMap[gCalId] ?= true
       @trigger()
     onError = (error) =>
       console.log(error)
@@ -58,3 +62,9 @@ module.exports = Reflux.createStore
         gcal_id: gCalId
 
     @fetchFromApi("/calendars", opts).then(onSuccess, onError)
+
+  # do we want clients to set the visibility?
+  setCalendarVisibility: (gCalId, visibility) ->
+    @data.visibilityMap[gCalId] = visibility
+    @trigger()
+

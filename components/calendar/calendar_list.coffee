@@ -14,12 +14,20 @@ module.exports = React.createClass
 
     div
       id: "sidebar-wrapper"
-      
-      "CALENDAR"
-      if @props.loading
-        "WE ARE LOADING"
-      else
-        for cal in @props.calendars
-          React.createElement CalendarContainer,
-            key: cal.id
-            calendar: cal
+      div
+        className: "calendar-list"
+        div
+          className: "calendar-list-title"
+          "CALENDARS"
+
+        if @props.loading
+          div
+            className: "calendar-spinner"
+            div
+              className: "spinner-loader"
+              "Loading..."
+        else
+          for cal in @props.calendars
+            React.createElement CalendarContainer,
+              key: cal.id
+              calendar: cal
