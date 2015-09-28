@@ -47,9 +47,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("img/btn_google_normal.png"); 
-  &:active {
-    background-image: url("img/btn_google_pressed.png"); 
-  }
   &.disabled {
     cursor: initial;
     background-image: url("img/btn_google_disabled.png"); 
