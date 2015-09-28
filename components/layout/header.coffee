@@ -38,7 +38,7 @@ module.exports = React.createClass
         className: "navbar-brand"
 
       ul
-        className: "nav navbar-nav navbar-left"
+        className: "nav navbar-nav navbar-left header-left"
         li null,
           a
             id: "toggle-button"
@@ -46,7 +46,7 @@ module.exports = React.createClass
             "Hide/Show Calendars"
 
       ul
-        className: "nav navbar-nav navbar-right"
+        className: "nav navbar-nav navbar-right header-right"
         li null,
           a
             id: "logout-button"
