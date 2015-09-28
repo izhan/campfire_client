@@ -1,3 +1,25 @@
 .header-navbar {
   margin-bottom: 0;
 }
+
+#logout-button {
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+#toggle-button {
+  cursor: pointer;
+}
+
+.header-center {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
+  pointer-events: none; // basically a hack
+  img {
+    width: 60px;
+    margin: 0 auto;
+  }
+}

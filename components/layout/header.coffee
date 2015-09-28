@@ -18,25 +18,37 @@ module.exports = React.createClass
     AuthActions.logoutUser()
     CalendarActions.clearAllEvents()
 
+  # currently unused
   getUserEmail: ->
     if @context.currentUser? then @context.currentUser.email else ""
 
   render: ->
-    { div, nav } = React.DOM
+    { div, nav, ul, li, a, img } = React.DOM
 
     nav
       className: "navbar navbar-default navbar-static-top header-navbar"
+
       div
-        className: "container"
-        "Header"
-        @getUserEmail()
+        className: "navbar-brand header-center"
+        img
+          src: "./img/tent_only.png"
 
-        div
-          className: "btn btn-default"
-          onClick: @onToggleSidebarClick
-          "Toggle"
 
-        div
-          className: "btn btn-default"
-          onClick: @onLogoutClick
-          "Logout"
+      div
+        className: "navbar-brand"
+
+      ul
+        className: "nav navbar-nav navbar-left"
+        li null,
+          a
+            id: "toggle-button"
+            onClick: @onToggleSidebarClick
+            "Hide/Show Calendars"
+
+      ul
+        className: "nav navbar-nav navbar-right"
+        li null,
+          a
+            id: "logout-button"
+            onClick: @onLogoutClick
+            "Logout"  
