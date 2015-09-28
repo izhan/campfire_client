@@ -68,8 +68,13 @@ module.exports = React.createClass
             className: "login-loading-message"
             "Fetching your info..."
           div
-            className: "login-spinner spinner-loader"
-            "Loading..."
+            className: "login-loading-message"
+            "(may take a minute)"
+          div
+            className: "login-spinner"
+            div
+              className: "spinner-loader"
+              "Loading..."
       else
         div
           className: "login-prompt"

@@ -24,7 +24,7 @@ $GUTTER_LEFT: 37px;
   margin-left: $GUTTER_LEFT;
 }
 thead td.fc-widget-header {
-  background: $THEME_LIGHT_BLUE;
+  border-top: solid 1px #efefef;
 }
 
 // all buttons
