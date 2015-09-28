@@ -26,7 +26,7 @@ module.exports = React.createClass
     { div, nav, ul, li, a, img } = React.DOM
 
     nav
-      className: "navbar navbar-default navbar-static-top header-navbar"
+      className: "navbar navbar-default navbar-fixed-top header-navbar"
 
       div
         className: "navbar-brand header-center"

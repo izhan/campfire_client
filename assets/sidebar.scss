@@ -18,6 +18,9 @@
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   height: 100%;
+
+  /* added by me — height of navbar*/
+  padding-top: 51px; 
 }
 
 #wrapper.toggled {
