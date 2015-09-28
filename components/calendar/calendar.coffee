@@ -48,6 +48,7 @@ module.exports = React.createClass
         week: "Week"
         day: "Day"
       allDayText: ""
+      aspectRatio: 2
 
       events: @getEvents
 
