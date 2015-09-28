@@ -19,6 +19,7 @@ module.exports = React.createClass
     full_cal_events = (EventAdapter.toFullCalendarEvent(ev) for ev in events)
     callback(full_cal_events)
 
+  # this will have performance issues
   onCalendarEventUpdate: ->
     @setState events: CalendarStore.getAllEvents()
     $("#calendar").fullCalendar("refetchEvents")

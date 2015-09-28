@@ -4,6 +4,7 @@ Promise = require('promise')
 module.exports =
   getBaseUrl: ->
     devMode = process.env.NODE_ENV == 'development'
+    # TODO should not hardcode these
     if devMode then 'http://localhost:3000' else 'https://obscure-citadel-9804.herokuapp.com'
 
   getApiUrl: ->
